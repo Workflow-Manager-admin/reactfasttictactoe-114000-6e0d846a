@@ -3,11 +3,9 @@ import "./App.css";
 
 /**
  * API BASE URL
- * Adjust for deployment if needed. Assumes backend runs on localhost:3001 for dev.
+ * (see src/apiConfig.js for deployment URL)
  */
-const API_BASE =
-  process.env.REACT_APP_API_URL ||
-  "http://localhost:3001"; // fallback for local dev
+import { API_BASE } from "./apiConfig";
 
 const BOARD_SIZE = 3;
 const PLAYER_X = "X";
