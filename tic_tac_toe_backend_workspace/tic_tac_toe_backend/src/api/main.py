@@ -192,4 +192,7 @@ def health_check():
     """Simple health check endpoint."""
     return {"message": "Healthy"}
 
->>>>>>> REPLACE
+# Entrypoint for Uvicorn
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("src.api.main:app", host="0.0.0.0", port=3001, reload=True)
