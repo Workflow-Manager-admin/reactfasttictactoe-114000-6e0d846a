@@ -1,44 +1,22 @@
 /* CSS Variables for Theme Management */
 :root {
-  /* Light theme colors */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --text-primary: #282c34;
-  --text-secondary: #61dafb;
-  --border-color: #e9ecef;
-  --button-bg: #007bff;
-  --button-text: #ffffff;
-}
-
-[data-theme="dark"] {
-  /* Dark theme colors */
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #282c34;
-  --text-primary: #ffffff;
-  --text-secondary: #61dafb;
-  --border-color: #404040;
-  --button-bg: #0056b3;
-  --button-text: #ffffff;
-}
-
-:root {
-  /* Modern/minimal colors for Tic Tac Toe */
+  /* Theme color palette */
+  /* Primary, Accent, Secondary as specified */
   --ttt-primary: #1976d2;
-  --ttt-secondary: #424242;
   --ttt-accent: #ffca28;
-  --ttt-bg: #ffffff;
-  --ttt-dark-bg: #181818;
+  --ttt-secondary: #424242;
+  --ttt-bg: #fff;
+  --ttt-bg-dark: #181818;
   --ttt-outline: #e9ecef;
   --ttt-x-color: #1976d2;
   --ttt-o-color: #ffca28;
-  --ttt-status-win: #43a047;
-  --ttt-status-tie: #9e9e9e;
+  --ttt-status-win: #388e3c;
+  --ttt-status-tie: #757575;
   --ttt-btn-bg: #1976d2;
   --ttt-btn-accent: #ffca28;
   --ttt-btn-txt: #fff;
 }
 
-/* Theme support (reuse existing dark theme) */
 [data-theme="light"] {
   --ttt-bg: #fff;
 }
@@ -46,101 +24,89 @@
   --ttt-bg: #181818;
 }
 
-.App {
-  text-align: center;
+body, .App {
+  min-height: 100vh;
   background: var(--ttt-bg);
   color: var(--ttt-secondary);
-  min-height: 100vh;
   transition: background 0.3s, color 0.3s;
+  font-family: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
+/* Header for structured vertical centering */
 .App-header {
-  background-color: var(--bg-secondary);
+  background: transparent;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: var(--text-primary);
-  transition: background-color 0.3s ease;
   position: relative;
-}
-
-.App-link {
-  color: var(--text-secondary);
-  transition: color 0.3s ease;
+  padding: 0;
+  font-size: 16px;
 }
 
 .theme-toggle {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: var(--button-bg);
-  color: var(--button-text);
+  top: 22px;
+  right: 24px;
+  background: var(--ttt-primary);
+  color: #fff;
   border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  font-size: 14px;
+  border-radius: 40px;
+  padding: 8px 18px 9px 18px;
+  font-size: 15px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  outline: none;
+  transition: background 0.22s, color 0.2s, box-shadow 0.22s;
+  box-shadow: 0 2px 8px 0 rgba(25,118,210,0.07);
+  z-index: 10;
+  letter-spacing: 0.013em;
+}
+.theme-toggle:hover,
+.theme-toggle:focus {
+  background: var(--ttt-accent);
+  color: var(--ttt-primary);
+  box-shadow: 0 4px 16px 0 rgba(255, 202, 40, 0.1);
 }
 
-.theme-toggle:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  opacity: 0.9;
-}
-
-.theme-toggle:active {
-  transform: translateY(0);
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Tic Tac Toe Core UI Styles */
 .ttt-container {
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: 1.25rem;
+  box-shadow: 0 6px 32px 0 rgba(25,118,210,0.08), 0 2px 8px 0 rgba(33,33,33,0.06);
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 50px;
-  background: rgba(250,250,250,0.8);
-  padding: 2.5rem 2rem 2rem 2rem;
-  border-radius: 1.25rem;
-  box-shadow: 0 6px 42px 0 rgba(25,118,210,0.045), 0 1.5px 7px 0 rgba(33,33,33,0.06);
+  padding: 2.25rem 1.5rem 1.45rem 1.5rem;
+  margin: 64px auto 0 auto;
+  max-width: 366px;
+  width: 96vw;
+}
+
+[data-theme="dark"] .ttt-container {
+  background: #23272a;
+  box-shadow: 0 6px 38px 0 rgba(25,118,210,0.10), 0 2px 6px 0 rgba(33,33,33,0.13);
 }
 
 .ttt-title {
-  font-size: 2.75rem;
+  font-size: 2.4rem;
   color: var(--ttt-primary);
-  letter-spacing: 0.055em;
   margin-bottom: 1.1rem;
   font-weight: 700;
+  letter-spacing: 0.04em;
+  text-shadow: none;
+  background: none;
+  border: none;
+  line-height: 1.16;
 }
 
 .ttt-status {
-  font-size: 1.25rem;
-  margin-bottom: 1.4rem;
+  font-size: 1.18rem;
+  margin-bottom: 1.25rem;
+  margin-top: 0.15rem;
 }
 
 .ttt-status .ttt-winner {
@@ -153,101 +119,182 @@
 .ttt-status .ttt-x {
   color: var(--ttt-x-color);
   font-weight: 600;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 .ttt-status .ttt-o {
   color: var(--ttt-o-color);
   font-weight: 600;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 
+/* Board */
 .ttt-board {
   display: grid;
-  grid-template-columns: repeat(3, 72px);
-  grid-template-rows: repeat(3, 72px);
-  gap: 0.4rem;
+  grid-template-columns: repeat(3, minmax(64px, 96px));
+  grid-template-rows: repeat(3, minmax(64px, 96px));
+  gap: 0.42rem;
   justify-content: center;
-  margin-bottom: 1.8rem;
+  margin-bottom: 1.7rem;
+  width: min-content;
+  max-width: 95vw;
+  touch-action: manipulation;
 }
 
 .ttt-square {
-  width: 72px;
-  height: 72px;
+  width: 86px;
+  height: 86px;
   background: #fff;
-  border: 2.2px solid var(--ttt-outline);
-  font-size: 2.5rem;
+  border: 2px solid var(--ttt-outline);
+  font-size: 2.4rem;
   font-weight: 700;
-  border-radius: 16px;
-  box-shadow: 0 0.5px 4px 0 rgba(31,31,52,0.06);
+  border-radius: 15px;
+  box-shadow: 0 1px 8px 0 rgba(25,118,210,0.05);
   cursor: pointer;
-  transition: background 0.18s, border 0.2s, box-shadow 0.2s, color 0.3s;
+  transition: background 0.18s, border 0.19s, box-shadow 0.16s, color 0.16s;
   display: flex;
   align-items: center;
   justify-content: center;
-  outline: none;
   color: var(--ttt-secondary);
+  outline: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  will-change: transform, color, background;
 }
 .ttt-square:disabled,
 .ttt-square[aria-disabled="true"] {
-  opacity: 0.53;
+  opacity: 0.48;
   cursor: not-allowed;
   background: #f2f3f7;
 }
-
 .ttt-square:not(:disabled):hover,
 .ttt-square:not(:disabled):focus {
-  border: 2.2px solid var(--ttt-primary);
-  box-shadow: 0 4px 12px 0 rgba(81, 148, 254, 0.10);
+  border: 2.5px solid var(--ttt-primary);
+  color: var(--ttt-primary);
+  box-shadow: 0 9px 18px 0 rgba(25,118,210,0.08);
+  background: rgba(25,118,210,0.09);
+}
+.ttt-square:active {
+  background: var(--ttt-accent);
+  color: var(--ttt-secondary);
 }
 
+[data-theme="dark"] .ttt-board { background: #23272a; }
+[data-theme="dark"] .ttt-square { background: #22252b; color: #e7e7e7; }
+[data-theme="dark"] .ttt-square:not(:disabled):hover,
+[data-theme="dark"] .ttt-square:not(:disabled):focus {
+  color: var(--ttt-accent);
+  border-color: var(--ttt-accent);
+  background: #32373d;
+}
+
+/* Buttons */
 .ttt-restart {
-  padding: 0.7rem 2.2rem;
-  font-size: 1.07rem;
+  min-width: 128px;
+  padding: 0.78rem 0.3rem 0.72rem 0.3rem;
+  font-size: 1.09rem;
   background: var(--ttt-btn-accent);
   color: var(--ttt-secondary);
   border: none;
-  border-radius: 10px;
+  border-radius: 9px;
   font-weight: 600;
-  letter-spacing: 1px;
-  box-shadow: 0 0.5px 6px 0 rgba(33,33,33,0.09);
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-  transition: all 0.22s cubic-bezier(0.35, 0.9, 0.48, 1);
+  letter-spacing: 0.5px;
+  margin-top: 0.2rem;
+  margin-bottom: 0.7rem;
+  transition: background 0.18s, color 0.16s, box-shadow 0.23s;
+  box-shadow: 0 2px 8px 0 rgba(66,66,66,0.08);
   cursor: pointer;
+  outline: none;
 }
 .ttt-restart:hover, .ttt-restart:focus {
   background: var(--ttt-primary);
   color: #fff;
+  box-shadow: 0 6px 24px 0 rgba(25,118,210,0.14);
+}
+.ttt-restart:active {
+  background: #15439a;
 }
 
 .ttt-footer {
-  margin-top: 60px;
+  margin-top: 56px;
   color: #b0b1b4;
-  font-size: 0.95rem;
+  font-size: 0.93rem;
   letter-spacing: 0.01em;
+  background: none;
+  border: none;
+  opacity: 0.83;
 }
 
-/* Responsive design for board */
-@media (max-width: 700px) {
-  .ttt-board, .ttt-container {
-    padding: 1rem 0.25rem;
-  }
-  .ttt-board {
-    grid-template-columns: repeat(3, 56px);
-    grid-template-rows: repeat(3, 56px);
-  }
-  .ttt-square {
-    width: 56px;
-    height: 56px;
-    font-size: 1.35rem;
+/* Mobile/Small screen adjustments */
+@media (max-width: 520px) {
+  .ttt-container {
+    border-radius: 0.75rem;
+    margin-top: 24px;
+    padding: 1.3rem 0.35rem 1.15rem 0.35rem;
+    box-shadow: 0 4px 15px 0 rgba(25,118,210,0.06);
+    min-width: 0;
+    width: 99.5vw;
+    max-width: 366px;
   }
   .ttt-title {
-    font-size: 2rem;
+    font-size: 1.55rem;
+    margin-bottom: 0.7rem;
+  }
+  .ttt-status {
+    font-size: 0.99rem;
+  }
+  .ttt-board {
+    grid-template-columns: repeat(3, 52px);
+    grid-template-rows: repeat(3, 52px);
+    gap: 0.29rem;
+    margin-bottom: 1.1rem;
+  }
+  .ttt-square {
+    width: 52px;
+    height: 52px;
+    font-size: 1.45rem;
+    border-radius: 8px;
+  }
+  .ttt-restart {
+    font-size: 0.96rem;
+    min-width: 94px;
+    margin-bottom: 0.27rem;
+  }
+  .theme-toggle {
+    padding: 7px 13px;
+    font-size: 14px;
+    top: 12px;
+    right: 8px;
+  }
+  .ttt-footer {
+    margin-top: 24px;
+    font-size: 0.87rem;
   }
 }
 
-/* Remove box highlight for accessibility if not in focus */
-.ttt-square:focus:not(:focus-visible) {
+/* Accessibility - Remove default box outline for squares unless focus visible */
+.ttt-square:focus {
   outline: none;
 }
+.ttt-square:focus-visible {
+  outline: 1.5px dashed var(--ttt-accent);
+  outline-offset: 1.5px;
+}
 
+/* Fine-tuned dark adjustment for minimal glare */
+[data-theme="dark"] .ttt-footer {
+  color: #97999e;
+}
+
+/* Remove unwanted highlighting and shadow for tap/drag selects */
+.ttt-square,
+.ttt-restart,
+.theme-toggle {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Minimal spinner - consistent with theme */
+@keyframes spinner-rot {
+  100% { transform: rotate(360deg);}
+}
